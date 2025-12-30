@@ -14,7 +14,7 @@ def create_animals():
 
 def proceed(animals):
     for animal in animals:
-        animal.energy -= 10
+        animal.change_energy(-10)
 
         roll_sound = random.randint(1, 4)
         if roll_sound <= 1:
@@ -46,4 +46,3 @@ def visitor_feeding(animals):
     for animal in animals:
         if animal.energy <= 30:
             Visitor.feed_animal(animal)
-            animal.eat()

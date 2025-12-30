@@ -1,4 +1,4 @@
-import zoo_mangement as manager
+import zoo_management as manager
 
 
 def menu():
@@ -10,7 +10,7 @@ def menu():
 menu()
 user_input = input()
 if user_input != '':
-    user_input == user_input.lower()
+    user_input = user_input.lower()
 
 if user_input == 'r':
     day = 1
@@ -49,7 +49,7 @@ if user_input == 'r':
 
         print('[N] next day \n[Q] quit')
         user_input = input()
-        if user_input.lower == 'q':
+        if user_input.lower() == 'q':
             running = False
         else:
             day += 1

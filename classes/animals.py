@@ -8,8 +8,18 @@ class Animal:
         print(f'{self.name} eats some food.')
 
     def sleep(self):
-        self.energy += 30
+        self.change_energy(30)
         print(f'{self.name} lays down to sleep.')
+
+    def change_energy(self, amount):
+        new_energy = self.energy + amount
+
+        if new_energy > 100:
+            new_energy = 100
+        elif new_energy < 0:
+            new_energy = 0
+
+        return new_energy
 
     def make_sound(self):
         raise NotImplementedError
@@ -23,7 +33,7 @@ class Herbivore(Animal):
         super().__init__(name, age)
 
     def eat(self):
-        self.energy += 15
+        self.energy = self.change_energy(25)
         print(f'{self.name} ate some plants')
 
 
@@ -32,7 +42,7 @@ class Carnivore(Animal):
         super().__init__(name, age)
 
     def eat(self):
-        self.energy += 20
+        self.energy = self.change_energy(35)
         print(f'{self.name} ate a chunk of meat')
 
 
@@ -43,11 +53,11 @@ class Elephant(Herbivore):
         super().__init__(name, age)
 
     def make_sound(self):
-        self.energy -= 10
+        self.energy = self.change_energy(-10)
         print(f'{self.name} made a loud trumpetsounding noise')
 
     def unique_behaviour(self):
-        self.energy -= 40
+        self.energy = self.change_energy(-20)
         print(f'{self.name} is splashing aroung in the pond.')
 
 
@@ -58,11 +68,11 @@ class Lion(Carnivore):
         super().__init__(name, age)
 
     def make_sound(self):
-        self.energy -= 10
+        self.energy = self.change_energy(-10)
         print(f'{self.name} roars loudly!')
 
     def unique_behaviour(self):
-        self.energy -= 40
+        self.energy = self.change_energy(-40)
         print(f'{self.name} is hunting a small critter.')
 
 
@@ -73,9 +83,9 @@ class Monkey(Herbivore):
         super().__init__(name, age)
 
     def make_sound(self):
-        self.energy -= 10
+        self.energy = self.change_energy(-10)
         print(f'{self.name} makes a playful chatter sound up in a tree.')
 
     def unique_behaviour(self):
-        self.energy -= 20
+        self.energy = self.change_energy(-30)
         print(f'{self.name} steels food from one of the visitors!')
